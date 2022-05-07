@@ -43,3 +43,8 @@ render();
 // Add this to the end of the existing file
 import './app';
 ```
+
+## Limitations
+
+`right-click` and some other events does not work (for MacOs?) if you use a `contextMenu` and did `tray.setContextMenu(contextMenu)`
+Hot reload does not work for tray changes

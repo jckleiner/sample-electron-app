@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 module.exports = {
   /**
    * This is the main entry point for your application, it's the first file

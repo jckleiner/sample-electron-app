@@ -18,6 +18,9 @@
     "no-unused-vars": "error",
     "quotes": ["error", "single"],
     "comma-dangle": ["error", "never"],
+    "no-console": "warn",
+    "semi": ["error", "never"],
+    "max-len": ["error", "140"],
 
     "import/extensions": [
       "error",
