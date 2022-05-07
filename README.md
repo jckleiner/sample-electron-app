@@ -6,6 +6,12 @@ An Electron app with React, Typescript, Webpack and hot reloading using [Electro
 
 `npm start`
 
+## Building Distributables
+If you run the make script Electron Forge will generate you platform specific distributables for you to share with everyone.
+For more information on what kind of distributables you can make, check out the [Makers](https://www.electronforge.io/config/makers) documentation.
+
+`npm run make`
+
 ## Steps to set up this project
 ### 1. TypeScript + Webpack 
 (https://www.electronforge.io/templates/typescript-+-webpack-template)

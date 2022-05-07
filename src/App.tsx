@@ -8,6 +8,6 @@ const App = () => {
       <h1>Hello from {title}</h1>
     </div>
   );
-}
+};
 
 export default App;
