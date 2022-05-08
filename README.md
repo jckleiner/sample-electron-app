@@ -44,7 +44,16 @@ render();
 import './app';
 ```
 
+### 3. Other Stuff
+
+the app could not load the preload script that were defined in the `BrowserWindow` object
+because it was not copied over to the `.webpack` folder.
+
+`Unable to load preload script: .../sample-electron-app/.webpack/main/preload.ts`
+
+I used `CopyWebpackPlugin` to solve this.
+
 ## Limitations
 
-`right-click` and some other events does not work (for MacOs?) if you use a `contextMenu` and did `tray.setContextMenu(contextMenu)`
-Hot reload does not work for tray changes
+1. `right-click` and some other events does not work (for MacOs?) if you use a `contextMenu` and did `tray.setContextMenu(contextMenu)`
+2. Hot reload does not work for tray changes
