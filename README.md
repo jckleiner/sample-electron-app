@@ -55,7 +55,9 @@ I used `CopyWebpackPlugin` to solve this.
 
 ## Limitations / Todos
 
- [ ] Open window in system tray
+ [ ] A well structured multiple window setup with react
+ [ ] What is `webPreferences: { nodeIntegration: true }` exactly?
+ [ ] Add a global shortcut like Alfred. I probably need to ask for a permission in order to do that
 
  * `right-click` and some other events does not work (for MacOs?) if you use a `contextMenu` and did `tray.setContextMenu(contextMenu)`
  * Hot reload does not work for system tray or preload.js changes

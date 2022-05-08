@@ -11,13 +11,13 @@ export const initializeTrayWithContextMenu = () => {
     { label: 'Item1', type: 'radio' },
     { label: 'Item2', type: 'radio' },
     { label: 'Item3', type: 'radio', checked: true },
-    { label: 'Item4', type: 'radio' },
+    { label: 'Preferences', accelerator: process.platform === 'darwin' ? 'Cmd+,' : 'Alt+Shift+I', click() { console.log('Preferences clicked') } },
     { label: 'Connecting...' },
     { label: 'Close', click() { console.log('close clicked') } },
     {
       label: 'Show Colors',
       id: 'color-scale',
-      accelerator: 'CmdOrCtrl+1',
+      accelerator: 'CmdOrCtrl+1', // shortcut
       enabled: true
     }
   ])
@@ -34,10 +34,10 @@ export const initializeTrayWithContextMenu = () => {
   // Make a change to the context menu
   contextMenu.items[3].checked = true
   setTimeout(() => {
-    console.log('2 secs waited, disabling item...')
+    console.log('5 secs waited, disabling item...')
     const myItem = contextMenu.getMenuItemById('color-scale')
     myItem.enabled = false
-  }, 2000)
+  }, 5000)
 
   tray.setToolTip('This is my application.')
   tray.setContextMenu(contextMenu)

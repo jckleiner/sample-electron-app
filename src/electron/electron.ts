@@ -75,6 +75,7 @@ async function handleFileOpen(event: { sender: any }) {
 app.on('ready', () => {
   console.log('\n --- app ready ---')
 
+  // main window
   // initializeTrayWithContextMenu()
 
   // tray with a window in it
@@ -83,7 +84,7 @@ app.on('ready', () => {
   ipcMain.on('set-title', handleSetTitle)
   ipcMain.handle('dialog:openFile', handleFileOpen)
 
-  // createMainWindow()
+  createMainWindow()
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
