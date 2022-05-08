@@ -56,4 +56,5 @@ I used `CopyWebpackPlugin` to solve this.
 ## Limitations
 
 1. `right-click` and some other events does not work (for MacOs?) if you use a `contextMenu` and did `tray.setContextMenu(contextMenu)`
-2. Hot reload does not work for tray changes
+2. Hot reload does not work for system tray or preload.js changes
+3. Preload is a JS file, should make it TS

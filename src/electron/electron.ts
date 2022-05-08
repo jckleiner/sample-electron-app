@@ -1,5 +1,5 @@
 import {
-  app, BrowserWindow, Menu, Tray, ipcMain
+  app, BrowserWindow, Menu, Tray, ipcMain, dialog
 } from 'electron'
 import fs from 'fs'
 import path from 'path'
@@ -35,8 +35,18 @@ const createWindow = (): void => {
 
 function handleSetTitle(event: { sender: any }, title: string) {
   const webContents = event.sender
-  const win = BrowserWindow.fromWebContents(webContents)
-  win.setTitle(title)
+  const window = BrowserWindow.fromWebContents(webContents)
+  window.setTitle(title)
+}
+
+async function handleFileOpen(event: { sender: any }) {
+  console.log('handleFileOpen...')
+
+  const { canceled, filePaths } = await dialog.showOpenDialog(BrowserWindow.fromWebContents(event.sender))
+  if (canceled) {
+    return null
+  }
+  return filePaths[0]
 }
 
 // This method will be called when Electron has finished
@@ -44,6 +54,8 @@ function handleSetTitle(event: { sender: any }, title: string) {
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   ipcMain.on('set-title', handleSetTitle)
+  ipcMain.handle('dialog:openFile', handleFileOpen)
+
   createWindow()
 })
 

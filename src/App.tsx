@@ -6,6 +6,12 @@ declare global {
   }
 }
 
+const openDialog = async () => {
+  console.log('open')
+  const filePath = await (window as ModifiedWindow).electronAPI.openFile()
+  console.log('filePath returned: ', filePath)
+}
+
 const App = () => {
   const [value, setValue] = useState<string>('bla')
 
@@ -20,7 +26,13 @@ const App = () => {
       Title: <input onInput={(e) => setValue((e.target as HTMLInputElement).value)}/>
       <button type="button" onClick={() => setWindowTitle()} >
         Set Window Title
-        </button>
+      </button>
+
+      <br/><br/>
+
+      <button type="button" onClick={() => openDialog()} >
+        Open Dialog
+      </button>
     </div>
   )
 }
