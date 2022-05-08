@@ -59,3 +59,4 @@ I used `CopyWebpackPlugin` to solve this.
 2. Hot reload does not work for system tray or preload.js changes
 3. Preload is a JS file, should make it TS
 4. `MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 update-counter listeners added to [EventEmitter]. Use emitter.setMaxListeners() to increase limit`. With each increment/decrement, more an more listeners are added.
+5. <a>'s are opened inside the app, not with the default browser
