@@ -1,61 +1,44 @@
-// import path from 'path';
-// import url from 'url';
-// import {
-//   app,
-//   Menu,
-//   Tray,
-//   BrowserWindow, ipcMain, Tray
-// } from 'electron';
+import {
+  Menu, Tray
+} from 'electron'
 
-// let MainTray: Tray | undefined;
-// let TrayWindow: BrowserWindow | undefined;
+let tray!: Tray
 
-// const WINDOW_SIZE_DEFAULTS = {
-//   width: 200,
-//   height: 300,
-//   margin: {
-//     x: 0,
-//     y: 0
-//   }
+export const initializeTray = () => {
+  tray = new Tray('./src/electron/icon.png')
 
-// };
+  const contextMenu = Menu.buildFromTemplate([
+    { label: 'Item1', type: 'radio' },
+    { label: 'Item2', type: 'radio' },
+    { label: 'Item3', type: 'radio', checked: true },
+    { label: 'Item4', type: 'radio' },
+    { label: 'Connecting...' },
+    { label: 'Close', click() { console.log('close clicked') } },
+    {
+      label: 'Show Colors',
+      id: 'color-scale',
+      accelerator: 'CmdOrCtrl+1',
+      enabled: true
+    }
+  ])
 
-// const a = '';
+  tray.on('click', () => {
+    console.log('clicked tray!')
+  })
 
-// // export function initTray() {
-// //     MainTray = new Tray(path.join(__dirname, "trayIcon.png"))
-// //     createWindow()
+  // right-click and some other events does not work (for MacOs?) if you use a contextMenu and did tray.setContextMenu(contextMenu)
+  tray.on('right-click', () => {
+    console.log('right-clicked tray!')
+  })
 
-// //     MainTray.on("click", () => {
-// //         ipcMain.emit("trat-window-clicked", { window: TrayWindow, tray: MainTray })
-// //         toggleTrayWindow()
-// //     })
+  // Make a change to the context menu
+  contextMenu.items[3].checked = true
+  setTimeout(() => {
+    console.log('2 secs waited, disabling item...')
+    const myItem = contextMenu.getMenuItemById('color-scale')
+    myItem.enabled = false
+  }, 2000)
 
-// //     alightWindow()
-
-// //     ipcMain.emit("tray-window-ready", { window: TrayWindow, tray: MainTray })
-// // }
-
-// let tray = null;
-
-// export default function doStuff() {
-//   app.on('ready', () => {
-//     tray = new Tray(path.join(__dirname, './icon.png'));
-
-//     console.log(' ----- works ???');
-
-//     //   if (process.platform === 'win32') {
-//     //     tray.on('click', tray.popUpContextMenu);
-//     //   }
-
-//     const menu = Menu.buildFromTemplate([
-//       {
-//         label: 'Quit',
-//         click() { app.quit(); }
-//       }
-//     ]);
-
-//     tray.setToolTip('Clipmaster');
-//     tray.setContextMenu(menu);
-//   });
-// }
+  tray.setToolTip('This is my application.')
+  tray.setContextMenu(contextMenu)
+}

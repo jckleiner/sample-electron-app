@@ -21,6 +21,7 @@
     "no-console": "warn",
     "semi": ["error", "never"],
     "max-len": "off",
+    "import/prefer-default-export": 0,
 
     "import/extensions": [
       "error",

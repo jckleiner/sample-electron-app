@@ -53,8 +53,9 @@ because it was not copied over to the `.webpack` folder.
 
 I used `CopyWebpackPlugin` to solve this.
 
-## Limitations
+## Limitations / Todos
 
 1. `right-click` and some other events does not work (for MacOs?) if you use a `contextMenu` and did `tray.setContextMenu(contextMenu)`
 2. Hot reload does not work for system tray or preload.js changes
 3. Preload is a JS file, should make it TS
+4. `MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 update-counter listeners added to [EventEmitter]. Use emitter.setMaxListeners() to increase limit`. With each increment/decrement, more an more listeners are added.
