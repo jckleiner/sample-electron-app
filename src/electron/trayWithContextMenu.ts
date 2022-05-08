@@ -4,7 +4,7 @@ import {
 
 let tray!: Tray
 
-export const initializeTray = () => {
+export const initializeTrayWithContextMenu = () => {
   tray = new Tray('./src/electron/icon.png')
 
   const contextMenu = Menu.buildFromTemplate([

@@ -55,8 +55,10 @@ I used `CopyWebpackPlugin` to solve this.
 
 ## Limitations / Todos
 
-1. `right-click` and some other events does not work (for MacOs?) if you use a `contextMenu` and did `tray.setContextMenu(contextMenu)`
-2. Hot reload does not work for system tray or preload.js changes
-3. Preload is a JS file, should make it TS
-4. `MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 update-counter listeners added to [EventEmitter]. Use emitter.setMaxListeners() to increase limit`. With each increment/decrement, more an more listeners are added.
-5. <a>'s are opened inside the app, not with the default browser
+ [ ] Open window in system tray
+
+ * `right-click` and some other events does not work (for MacOs?) if you use a `contextMenu` and did `tray.setContextMenu(contextMenu)`
+ * Hot reload does not work for system tray or preload.js changes
+ * Preload is a JS file, should make it TS. How can you ensure type safety? Also auto completion?
+ * `MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 update-counter listeners added to [EventEmitter]. Use emitter.setMaxListeners() to increase limit`. With each increment/decrement, more an more listeners are added.
+ * . <a>'s are opened inside the app, not with the default browser
