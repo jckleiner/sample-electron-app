@@ -20,7 +20,7 @@
     "comma-dangle": ["error", "never"],
     "no-console": "warn",
     "semi": ["error", "never"],
-    "max-len": ["error", "140"],
+    "max-len": "off",
 
     "import/extensions": [
       "error",

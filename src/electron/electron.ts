@@ -63,7 +63,13 @@ const initTray = () => {
     { label: 'Item3', type: 'radio', checked: true },
     { label: 'Item4', type: 'radio' },
     { label: 'Connecting...' },
-    { label: 'Close', click() { console.log('close clicked') } }
+    { label: 'Close', click() { console.log('close clicked') } },
+    {
+      label: 'Show Colors',
+      id: 'color-scale',
+      accelerator: 'CmdOrCtrl+1',
+      enabled: true
+    }
   ])
 
   tray.on('click', () => {
@@ -77,6 +83,11 @@ const initTray = () => {
 
   // Make a change to the context menu
   contextMenu.items[3].checked = true
+  setTimeout(() => {
+    console.log('2 secs waited, disabling item...')
+    const myItem = contextMenu.getMenuItemById('color-scale')
+    myItem.enabled = false
+  }, 2000)
 
   tray.setToolTip('This is my application.')
   tray.setContextMenu(contextMenu)
